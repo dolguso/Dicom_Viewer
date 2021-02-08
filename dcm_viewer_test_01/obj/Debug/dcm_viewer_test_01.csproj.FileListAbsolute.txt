@@ -1,0 +1,14 @@
+D:\Documents\SOURCE\dcm_viewer_test_01\dcm_viewer_test_01\bin\Debug\dcm_viewer_test_01.exe.config
+D:\Documents\SOURCE\dcm_viewer_test_01\dcm_viewer_test_01\bin\Debug\dcm_viewer_test_01.exe
+D:\Documents\SOURCE\dcm_viewer_test_01\dcm_viewer_test_01\bin\Debug\dcm_viewer_test_01.pdb
+D:\Documents\SOURCE\dcm_viewer_test_01\dcm_viewer_test_01\obj\Debug\dcm_viewer_test_01.csprojAssemblyReference.cache
+D:\Documents\SOURCE\dcm_viewer_test_01\dcm_viewer_test_01\obj\Debug\MainWindow.g.cs
+D:\Documents\SOURCE\dcm_viewer_test_01\dcm_viewer_test_01\obj\Debug\App.g.cs
+D:\Documents\SOURCE\dcm_viewer_test_01\dcm_viewer_test_01\obj\Debug\dcm_viewer_test_01_MarkupCompile.cache
+D:\Documents\SOURCE\dcm_viewer_test_01\dcm_viewer_test_01\obj\Debug\dcm_viewer_test_01_MarkupCompile.lref
+D:\Documents\SOURCE\dcm_viewer_test_01\dcm_viewer_test_01\obj\Debug\MainWindow.baml
+D:\Documents\SOURCE\dcm_viewer_test_01\dcm_viewer_test_01\obj\Debug\dcm_viewer_test_01.g.resources
+D:\Documents\SOURCE\dcm_viewer_test_01\dcm_viewer_test_01\obj\Debug\dcm_viewer_test_01.Properties.Resources.resources
+D:\Documents\SOURCE\dcm_viewer_test_01\dcm_viewer_test_01\obj\Debug\dcm_viewer_test_01.csproj.GenerateResource.cache
+D:\Documents\SOURCE\dcm_viewer_test_01\dcm_viewer_test_01\obj\Debug\dcm_viewer_test_01.exe
+D:\Documents\SOURCE\dcm_viewer_test_01\dcm_viewer_test_01\obj\Debug\dcm_viewer_test_01.pdb
