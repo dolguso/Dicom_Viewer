@@ -1,0 +1,151 @@
+﻿<Window x:Class="Dicom_Viewer_Platform.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Dicom_Viewer_Platform"
+        mc:Ignorable="d"
+        x:Name="big_window"
+        Title="DICOM VIEWER" Height="1080" Width="1920" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowState="Maximized" WindowStyle="None" Loaded="big_window_Loaded" Background="Black">
+    <Grid x:Name="big_grid" MouseMove="dcm_viewer_MouseMove" MouseRightButtonUp="dcm_viewer_MouseRightButtonUp" MouseLeftButtonUp="dcm_viewer_MouseLeftButtonUp" Background="#202020">
+        <Grid.ColumnDefinitions>
+            
+            <ColumnDefinition Width="1.5*"></ColumnDefinition>
+            <ColumnDefinition Width="8.5*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid x:Name="grid_select" Grid.ColumnSpan="1" VerticalAlignment="Center" HorizontalAlignment="Stretch"></Grid>
+        <Grid x:Name="grid_viewer" Grid.ColumnSpan="1" VerticalAlignment="Center" Grid.Column="1"/>
+        <Grid x:Name="grid_sidebar" Grid.Column="2" VerticalAlignment="Center" Background="#202020">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.05*"></RowDefinition>
+                <!--<RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="0.05*"></RowDefinition>-->
+                <RowDefinition Height="11*"></RowDefinition>
+                <RowDefinition Height="0.05*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <!--<Grid Margin="10,1" x:Name="grid_select_btn" VerticalAlignment="Top" Grid.Row="1">
+                <Border BorderBrush="#FFAFAFAF" BorderThickness="3" CornerRadius="40"  Background="#FF373A3A" ClipToBounds="True" Margin="0" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave" MouseLeftButtonDown="Border_MouseLeftButtonDown">
+                    <Image Source=".\icons\tool_change_01.png" Margin="0,10"></Image>
+                </Border>
+            </Grid>-->
+            <Grid Margin="10,1" x:Name="grid_btn" VerticalAlignment="Top" Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"></RowDefinition>
+                    <RowDefinition Height="1*"></RowDefinition>
+                    <RowDefinition Height="1*"></RowDefinition>
+                    <RowDefinition Height="1*"></RowDefinition>
+                    <RowDefinition Height="1*"></RowDefinition>
+                    <RowDefinition Height="1*"></RowDefinition>
+                    <RowDefinition Height="1*"></RowDefinition>
+                    <RowDefinition Height="1*"></RowDefinition>
+                    <RowDefinition Height="1*"></RowDefinition>
+                    <RowDefinition Height="1*"></RowDefinition>
+                    <RowDefinition Height="1*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Border Background="#373a3a" BorderBrush="#202020" BorderThickness="2" CornerRadius="3" Grid.Row="0" Grid.Column="0" x:Name="btn_01">
+                    <Image Source=".\icons\display_1_1_01.png"></Image>
+                </Border>
+                <Border Background="#373a3a" BorderBrush="#202020" BorderThickness="2" CornerRadius="3" Grid.Row="0" Grid.Column="1" x:Name="btn_02">
+                    <Image Source=".\icons\display_2_1_01.png"></Image>
+                </Border>
+
+                <Border Background="#373a3a" BorderBrush="#202020" BorderThickness="2" CornerRadius="3" Grid.Row="1" Grid.Column="0" x:Name="btn_03">
+                    <Image Source=".\icons\display_1_2_01.png"></Image>
+                </Border>
+                <Border Background="#373a3a" BorderBrush="#202020" BorderThickness="2" CornerRadius="3" Grid.Row="1" Grid.Column="1" x:Name="btn_04">
+                    <Image Source=".\icons\display_2_2_01.png"></Image>
+                </Border>
+
+                <Border Background="#373a3a" BorderBrush="#202020" BorderThickness="2" CornerRadius="3" Grid.Row="2" Grid.Column="0" x:Name="btn_05">
+                    <Image Source=".\icons\tool_reset_01.png"></Image>
+                </Border>
+                <Border Background="#373a3a" BorderBrush="#202020" BorderThickness="2" CornerRadius="3" Grid.Row="2" Grid.Column="1" x:Name="btn_06">
+                    <Image Source=".\icons\tool_pan_01.png"></Image>
+                </Border>
+
+                <Border Background="#373a3a" BorderBrush="#202020" BorderThickness="2" CornerRadius="3" Grid.Row="3" Grid.Column="0" x:Name="btn_07">
+                    <Image Source=".\icons\tool_mag_01.png"></Image>
+                </Border>
+                <Border Background="#373a3a" BorderBrush="#202020" BorderThickness="2" CornerRadius="3" Grid.Row="3" Grid.Column="1" x:Name="btn_08">
+                    <Image Source=".\icons\tool_zoom_01.png"></Image>
+                </Border>
+
+                <Border Background="#373a3a" BorderBrush="#202020" BorderThickness="2" CornerRadius="3" Grid.Row="4" Grid.Column="0" x:Name="btn_09">
+                    <Image Source=".\icons\ccw_01.png"></Image>
+                </Border>
+                <Border Background="#373a3a" BorderBrush="#202020" BorderThickness="2" CornerRadius="3" Grid.Row="4" Grid.Column="1" x:Name="btn_10">
+                    <Image Source=".\icons\cw_01.png"></Image>
+                </Border>
+
+                <Border Background="#373a3a" BorderBrush="#202020" BorderThickness="2" CornerRadius="3" Grid.Row="5" Grid.Column="0" x:Name="btn_11">
+                    <Image Source=".\icons\tool_hmirror_01.png"></Image>
+                </Border>
+                <Border Background="#373a3a" BorderBrush="#202020" BorderThickness="2" CornerRadius="3" Grid.Row="5" Grid.Column="1" x:Name="btn_12">
+                    <Image Source=".\icons\tool_vmirror_01.png"></Image>
+                </Border>
+
+                <Border Background="#373a3a" BorderBrush="#202020" BorderThickness="2" CornerRadius="3" Grid.Row="6" Grid.Column="0" x:Name="btn_13">
+                    <Image Source=".\icons\tool_wl_01.png"></Image>
+                </Border>
+                <Border Background="#373a3a" BorderBrush="#202020" BorderThickness="2" CornerRadius="3" Grid.Row="6" Grid.Column="1" x:Name="btn_14">
+                    <Image Source=".\icons\tool_invert_01.png"></Image>
+                </Border>
+
+                <Border Background="#373a3a" BorderBrush="#202020" BorderThickness="2" CornerRadius="3" Grid.Row="7" Grid.Column="0" x:Name="btn_15">
+                    <Image Source=".\icons\angle_01.png"></Image>
+                </Border>
+                <Border Background="#373a3a" BorderBrush="#202020" BorderThickness="2" CornerRadius="3" Grid.Row="7" Grid.Column="1" x:Name="btn_16">
+                    <Image Source=".\icons\dist_01.png"></Image>
+                </Border>
+
+                <Border Background="#373a3a" BorderBrush="#202020" BorderThickness="2" CornerRadius="3" Grid.Row="8" Grid.Column="0" x:Name="btn_17">
+                    <Image Source=".\icons\tool_snh_02.png" RenderTransformOrigin="0.5,0.5">
+                        <Image.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform ScaleY="1" ScaleX="1"/>
+                                <SkewTransform AngleY="0" AngleX="0"/>
+                                <RotateTransform Angle="0"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Image.RenderTransform>
+                    </Image>
+                </Border>
+                <Border Background="#373a3a" BorderBrush="#202020" BorderThickness="2" CornerRadius="3" Grid.Row="8" Grid.Column="1" x:Name="btn_18">
+                    <Image Source=".\icons\trash_01.png"></Image>
+                </Border>
+
+                <Border Background="#373a3a" BorderBrush="#202020" BorderThickness="2" CornerRadius="3" Grid.Row="9" Grid.Column="0" x:Name="btn_19">
+                    <Image Source=".\icons\left_01.png"></Image>
+                </Border>
+                <Border Background="#373a3a" BorderBrush="#202020" BorderThickness="2" CornerRadius="3" Grid.Row="9" Grid.Column="1" x:Name="btn_20">
+                    <Image Source=".\icons\right_01.png"></Image>
+                </Border>
+
+                <Border Background="#373a3a" BorderBrush="#202020" BorderThickness="2" CornerRadius="3" Grid.Row="10" Grid.Column="0" x:Name="btn_21">
+                    <Label VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#aba49c" FontSize="20">Send</Label>
+                </Border>
+                <Border Background="#373a3a" BorderBrush="#202020" BorderThickness="2" CornerRadius="3" Grid.Row="10" Grid.Column="1" x:Name="btn_22">
+                    <Label VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#aba49c" FontSize="20">Close</Label>
+                </Border>
+            </Grid>
+        </Grid>
+        <Border x:Name="pin_grid" Width="200" Height="200" Grid.ColumnSpan="3" HorizontalAlignment="Left" VerticalAlignment="Top" IsHitTestVisible="False" ClipToBounds="True">
+            <Grid>
+                <ScrollViewer x:Name="pin_scroll" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Disabled" Visibility="Visible" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+                    <ScrollViewer.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform x:Name="pin_scale_trans"/>
+                        </TransformGroup>
+                    </ScrollViewer.RenderTransform>
+                    <Image x:Name="pin_zoom_area"></Image>
+                </ScrollViewer>
+            </Grid>
+        </Border>
+
+    </Grid>
+</Window>

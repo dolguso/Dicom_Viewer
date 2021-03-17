@@ -1,0 +1,6 @@
+D:\Documents\SOURCE\Dicom_Viewer_Platform\Dicom_Viewer_Platform\obj\x64\Release\Viewer.csprojAssemblyReference.cache
+D:\Documents\SOURCE\Dicom_Viewer_Platform\Dicom_Viewer_Platform\obj\x64\Release\MainWindow.g.cs
+D:\Documents\SOURCE\Dicom_Viewer_Platform\Dicom_Viewer_Platform\obj\x64\Release\App.g.cs
+D:\Documents\SOURCE\Dicom_Viewer_Platform\Dicom_Viewer_Platform\obj\x64\Release\Dicom_Viewer_Content.g.cs
+D:\Documents\SOURCE\Dicom_Viewer_Platform\Dicom_Viewer_Platform\obj\x64\Release\Dicom_Viewer_MarkupCompile.cache
+D:\Documents\SOURCE\Dicom_Viewer_Platform\Dicom_Viewer_Platform\obj\x64\Release\Dicom_Viewer_MarkupCompile.lref

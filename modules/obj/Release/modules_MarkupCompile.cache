@@ -4,7 +4,7 @@
 library
 C#
 .cs
-D:\Documents\SOURCE\dcm_viewer_test_01\modules\obj\Release\
+D:\Documents\SOURCE\Dicom_Viewer_Platform\modules\obj\Release\
 modules
 none
 false
@@ -12,9 +12,9 @@ TRACE
 
 1-731644535
 
-5-1828357502
+4-750778670
 141183416626
 Themes\Generic.xaml;
 
-True
+False
 
