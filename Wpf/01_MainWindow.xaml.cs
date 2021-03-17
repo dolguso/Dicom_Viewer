@@ -584,24 +584,24 @@ namespace Wpf
             bg_dbworker.RunWorkerAsync();
 
             detection_interval = 500;
-            //if (ai_model_01_AIset.number_of_class > 0)
-            //{
-            //    Console.WriteLine("ai_model_01 run");
-            //    ai_model_01_manager = new ai_model_01_01K.ai_model_01Manager();
-            //    bg_aiworker_ai_model_01 = new BackgroundWorker();
-            //    bg_aiworker_ai_model_01.DoWork += new DoWorkEventHandler(backgroundai_model_01AIResult);
-            //    bg_aiworker_ai_model_01.RunWorkerAsync();
-            //}
+            if (ai_model_01_AIset.number_of_class > 0)
+            {
+                Console.WriteLine("ai_model_01 run");
+                ai_model_01_manager = new ai_model_01_01K.ai_model_01Manager();
+                bg_aiworker_ai_model_01 = new BackgroundWorker();
+                bg_aiworker_ai_model_01.DoWork += new DoWorkEventHandler(backgroundai_model_01AIResult);
+                bg_aiworker_ai_model_01.RunWorkerAsync();
+            }
 
-            //if (ai_model_02_AIset.number_of_class > 0)
-            //{
-            //    Console.WriteLine("ai_model_02 run");
-            //    ai_model_02_manager = new ai_model_01_01K.ai_model_02Manager();
-            //    ai_model_02_manager_2 = new ai_model_01_01K.ai_model_02Manager2();
-            //    bg_aiworker_ai_model_02 = new BackgroundWorker();
-            //    bg_aiworker_ai_model_02.DoWork += new DoWorkEventHandler(backgroundai_model_02AIResult);
-            //    bg_aiworker_ai_model_02.RunWorkerAsync();
-            //}
+            if (ai_model_02_AIset.number_of_class > 0)
+            {
+                Console.WriteLine("ai_model_02 run");
+                ai_model_02_manager = new ai_model_01_01K.ai_model_02Manager();
+                ai_model_02_manager_2 = new ai_model_01_01K.ai_model_02Manager2();
+                bg_aiworker_ai_model_02 = new BackgroundWorker();
+                bg_aiworker_ai_model_02.DoWork += new DoWorkEventHandler(backgroundai_model_02AIResult);
+                bg_aiworker_ai_model_02.RunWorkerAsync();
+            }
             #endregion
 
             bg_saveimage = new BackgroundWorker();
@@ -979,8 +979,6 @@ namespace Wpf
                 //video_capture.Set(CaptureProperty.Brightness, -10);
                 //video_capture.Set(CaptureProperty.Contrast, 110);
 
-
-
                 //video_capture.Set(CaptureProperty., );
 
                 image_print_bitmap = new WriteableBitmap(frame_width, frame_height, 96, 96, PixelFormats.Bgr24, null);
@@ -999,46 +997,6 @@ namespace Wpf
             }
         }
 
-        private BitmapImage byteArrayToImage(byte[] byteArrayIn)
-        {
-            try
-            {
-                MemoryStream stream = new MemoryStream();
-                stream.Write(byteArrayIn, 0, byteArrayIn.Length);
-                stream.Position = 0;
-                System.Drawing.Image img = System.Drawing.Image.FromStream(stream);
-                BitmapImage returnImage = new BitmapImage();
-                returnImage.BeginInit();
-                MemoryStream ms = new MemoryStream();
-                img.Save(ms, System.Drawing.Imaging.ImageFormat.Bmp);
-                ms.Seek(0, SeekOrigin.Begin);
-                returnImage.StreamSource = ms;
-                returnImage.EndInit();
-
-                return returnImage;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            return null;
-        }
-
-        public class ByteImageConverter
-        {
-            public static ImageSource ByteToImage(byte[] imageData)
-            {
-                BitmapImage biImg = new BitmapImage();
-                MemoryStream ms = new MemoryStream(imageData);
-                biImg.BeginInit();
-                biImg.StreamSource = ms;
-                biImg.EndInit();
-
-                ImageSource imgSrc = biImg as ImageSource;
-
-                return imgSrc;
-            }
-        }
         private void Dispose(object sender, System.ComponentModel.CancelEventArgs e)
         {
             loop_check = false;
@@ -1068,23 +1026,12 @@ namespace Wpf
             roi_int[1] = Convert.ToInt32(Convert.ToDouble(setting_save[(int)SettingFlagIndex.roi_start_y]));
             roi_int[2] = Convert.ToInt32(setting_save[(int)SettingFlagIndex.roi_end_x]) > Convert.ToInt32(setting_save[(int)SettingFlagIndex.screen_width]) ? Convert.ToInt32(setting_save[(int)SettingFlagIndex.screen_width]) : Convert.ToInt32(setting_save[(int)SettingFlagIndex.roi_end_x]);
             roi_int[3] = Convert.ToInt32(setting_save[(int)SettingFlagIndex.roi_end_y]) > Convert.ToInt32(setting_save[(int)SettingFlagIndex.screen_height]) ? Convert.ToInt32(setting_save[(int)SettingFlagIndex.screen_height]) : Convert.ToInt32(setting_save[(int)SettingFlagIndex.roi_end_y]);
-            //roi_int[2] = Convert.ToInt32(Convert.ToDouble(setting_save[(int)SettingFlagIndex.roi_end_x]));
-            //roi_int[3] = Convert.ToInt32(Convert.ToDouble(setting_save[(int)SettingFlagIndex.roi_end_y]));
-
-            //roi_int[0] = roi_int[0] < 0 ? 0 : roi_int[0];
-            //roi_int[1] = roi_int[1] < 0 ? 0 : roi_int[1];
-            //roi_int[2] = roi_int[2] > frame_width ? frame_width : roi_int[2];
-            //roi_int[3] = roi_int[3] > frame_height ? frame_height : roi_int[3];
-
+            
             roi_start_x = roi_int[0];
             roi_end_x = roi_int[2];
             roi_start_y = roi_int[1];
             roi_end_y = roi_int[3];
 
-            //roi_int[0] = roi_int[0] * frame_width / 1920;
-            //roi_int[1] = roi_int[1] * frame_height / 1080;
-            //roi_int[2] = roi_int[2] * frame_width / 1920;
-            //roi_int[3] = roi_int[3] * frame_height / 1080;
             roi_int[0] = roi_int[0] * frame_width / screen_wid;
             roi_int[1] = roi_int[1] * frame_height / screen_hei;
             roi_int[2] = roi_int[2] * frame_width / screen_wid;
@@ -1119,10 +1066,6 @@ namespace Wpf
             Mat abc = new Mat();
             video_capture.Read(abc);
 
-            //_05_Showing show = new _05_Showing(roi_rect, roi_scale.CenterX, roi_scale.CenterY, roi_scale.ScaleX, roi_scale.ScaleY);
-            //show.Tag = "mdi_child";
-            //show.Show();
-
             byte[] temp_byte = new byte[0];
 
             Stopwatch matching = new Stopwatch();
@@ -1134,12 +1077,9 @@ namespace Wpf
             List<int> matching_error_mini = new List<int>();
             int result = 0;
             int minus_check = 0;
-            //Cv2.NamedWindow("show", WindowMode.OpenGL);
 
             while (loop_check)
-            //for (int k = 0; k < 500; k++)
             {
-                //Console.WriteLine(screen_wid + ", " + screen_hei);
                 int matching_re = 0;
 
 
@@ -1655,181 +1595,11 @@ namespace Wpf
                 //Cv2.ImShow("temp", mat_list[mat_index % 5][roi_rect]);
                 #endregion
 
-                db.Restart();
-                #region db
-                int dis_check = 0;
-                int wholeDis = 0;
-
-                if (ai_model_01_AIset.number_of_class > 0)
-                {
-                    dis_check = ai_model_01_matching_result;
-                    wholeDis = AI_Vid_Demo.ImgManager.GetSaveDistance(index: (int)AI_Vid_Demo.DetectorIndices.ai_model_01);
-                }
-                else if (ai_model_02_AIset.number_of_class > 0)
-                {
-                    dis_check = ai_model_02_matching_result;
-                    wholeDis = AI_Vid_Demo.ImgManager.GetSaveDistance(index: (int)AI_Vid_Demo.DetectorIndices.ai_model_02);
-                }
-
-                sub_max = sub_max > (Math.Abs(wholeDis) - Math.Abs(pre_dis)) ? sub_max : (wholeDis - pre_dis);
-                pre_dis = wholeDis;
-                //if (sub_max > 300)
-                //    fast_check = 0;
-
-                if (Math.Abs(dis_check) > 30 && image_db_save_check == 4)
-                    image_db_save_check = 1;
-
-                if ((/*Math.Abs(dis_check) < 30 || */Math.Abs(wholeDis) > 640)/* && ai_check == 1 && image_db_save_check == 1 && db_save_check == -1 && ai_model_01_matching_result < 300*/)
-                {
-                    sub_max = 300;
-                    pre_dis = 0;
-                    fast_check = 1;
-                    box_drawing_check = 0;
-                    time = DateTime.Now;
-                    save_index = mat_index;
-                    AI_Vid_Demo.ImgManager.ResetSaveDistance(index: (int)AI_Vid_Demo.DetectorIndices.ai_model_01);
-                    AI_Vid_Demo.ImgManager.ResetSaveDistance(index: (int)AI_Vid_Demo.DetectorIndices.ai_model_02);
-                    db_save_check = 0;
-                    list_ai_model_01 = new List<object[]>();
-                    list_ai_model_02 = new List<object[]>();
-
-                    db_ai_model_01_input_list = new List<object[]>();
-                    db_ai_model_02_input_list = new List<object[]>();
-
-                    #region save_DB
-                    image_db_save_check = 3;
-                    info_insert = new string[7];
-                    input_pk = new object[7];
-                    time.ToString("yyyy-MM-dd_HH:mm:ss.ffffff");
-                    input_pk[1] = "A CON";
-                    input_pk[2] = "B FAC";
-                    input_pk[3] = "C LINE";
-                    input_pk[4] = "D DEV";
-                    input_pk[5] = time.ToString("yyyy-MM-dd HH:mm:ss"); ;
-                    input_pk[6] = time.ToString("yyyy-MM-dd_HH_mm_ss.ffffff") + ".jpg";
-
-                    info_insert[0] = "PK";
-                    info_insert[1] = "COUNTRY";
-                    info_insert[2] = "FACNAME";
-                    info_insert[3] = "FACNUMB";
-                    info_insert[4] = "DEVNUMB";
-                    info_insert[5] = "DATE";
-                    info_insert[6] = "FILEPATH";
-
-                    input_pk[0] = pk_index;
-                    if (ai_model_01_AIset.number_of_class > 0 && ai_model_01_result_temp != null)
-                        foreach (DetectItem detResult in ai_model_01_result_temp)
-                        {
-                            double det_val = (1 - detResult.Confidence);
-                            if (det_val <= 0.99)
-                            {
-                                int det_class = Convert.ToInt32(detResult.Type);
-                                if (!(ai_model_01_on.Contains(ai_model_01_AIset.result_converter[det_class])))
-                                    continue;
-                                int sens = 0;
-                                if (det_val < ai_model_01_AIset.confidence_list[det_class] && parameter_send[ai_model_01_AIset.result_converter[det_class] * 2 + 2] == 1)
-                                {
-                                    sens = 1;
-                                }
-                                int class_d = 0;
-                                class_d = ai_model_01_AIset.result_converter[det_class];
-                                class_d += 1;
-                                db_ai_model_01_input = new object[8];
-                                db_ai_model_01_input[0] = pk_index;
-                                db_ai_model_01_input[1] = class_d;
-                                db_ai_model_01_input[4] = (Convert.ToDouble(detResult.Width) / 1920.0);
-                                db_ai_model_01_input[5] = (Convert.ToDouble(detResult.Height) / 996.0);
-                                db_ai_model_01_input[2] = (Convert.ToDouble(detResult.X) / 1920.0 + (ai_model_01_matching_result * roi_rect.Width / mat_list[mat_index % 5].Width) / 1920.0);
-                                db_ai_model_01_input[3] = (Convert.ToDouble(detResult.Y + ideal_height) / 996.0);
-                                db_ai_model_01_input[6] = detResult.Confidence;
-                                db_ai_model_01_input[7] = sens;
-                                db_input_list.Add(db_ai_model_01_input);
-                                list_ai_model_01.Add(db_ai_model_01_input);
-                            }
-                        }
-
-                    if (ai_model_02_AIset.number_of_class > 0 && ai_model_02_result_temp != null)
-                        foreach (DetectItem detResult in ai_model_02_result_temp)
-                        {
-                            double det_val = (1 - detResult.Confidence);
-                            if (det_val <= 0.99)
-                            {
-                                int det_class = Convert.ToInt32(detResult.Type);
-                                if (!(ai_model_02_on.Contains(ai_model_02_AIset.result_converter[det_class])))
-                                    continue;
-                                int sens = 0;
-                                int class_d = 0;
-                                if (det_val < ai_model_02_AIset.confidence_list[det_class] && parameter_send[(ai_model_02_AIset.result_converter[det_class] + 5) * 2 + 2] == 1)
-                                {
-                                    sens = 1;
-                                }
-                                class_d = ai_model_02_AIset.result_converter[det_class];
-                                class_d += 6;
-                                db_ai_model_02_input = new object[8];
-                                db_ai_model_02_input[0] = pk_index;
-                                db_ai_model_02_input[1] = class_d;
-                                db_ai_model_02_input[4] = (Convert.ToDouble(detResult.Width) / resize_width);
-                                db_ai_model_02_input[5] = (Convert.ToDouble(detResult.Height) / resize_height);
-                                db_ai_model_02_input[2] = (Convert.ToDouble(detResult.X) / resize_width + (ai_model_02_matching_result * roi_rect.Width / mat_list[mat_index % 5].Width) / 1920.0);
-                                db_ai_model_02_input[3] = (Convert.ToDouble(detResult.Y) / resize_height);
-                                db_ai_model_02_input[6] = detResult.Confidence;
-                                db_ai_model_02_input[7] = sens;
-                                db_input_list.Add(db_ai_model_02_input);
-                                list_ai_model_02.Add(db_ai_model_02_input);
-                            }
-                        }
-                    bg_saveimage.RunWorkerAsync();
-                    #endregion
-                    db_save_check = 1;
-
-                    dir_path = (setting_save[(int)SettingFlagIndex.save_dir_path]) + @"IMAGES\" + time.ToString("yyyy-MM-dd");
-                    DirectoryInfo directory_path = new DirectoryInfo(dir_path);
-                    if (directory_path.Exists == false)
-                    {
-                        directory_path.Create();
-                    }
-                    dir_path = (setting_save[(int)SettingFlagIndex.save_dir_path]) + @"RESULTS\" + time.ToString("yyyy-MM-dd");
-                    directory_path = new DirectoryInfo(dir_path);
-                    if (directory_path.Exists == false)
-                    {
-                        directory_path.Create();
-                    }
-
-                    ai_check = 0;
-                    image_db_save_check = 4;
-
-                }
-
-                //#region led_select
-                ////if (alarm_check != alarm && parameter_send[1] == 1)
-                ////{
-                ////    fixed (byte* temp = alarm)
-                ////        Usb_Qu_write(0, 0, temp);
-                ////}
-                ////else if (parameter_send[1] == 0)
-                ////{
-                ////    for (int i = 0; i < 6; i++)
-                ////        alarm[i] = 0;
-                ////    fixed (byte* temp = alarm)
-                ////        Usb_Qu_write(0, 0, temp);
-                ////}
-                //#endregion
-                #endregion
-                db.Stop();
-                //if (matching.ElapsedMilliseconds >= 7)
-                //    Console.WriteLine("MATCHING, " + matching.ElapsedMilliseconds + ", BOX , " + box.ElapsedMilliseconds + ", DB , " + db.ElapsedMilliseconds);
-
                 mat_index += 1;
-                /* int c = */
                 Cv2.WaitKey(1);
-                //while (c != -1)
-                //    break;
+                
             }
-            //for (int i = 0; i < matching_error_after.Count; i++)
-            //{
-            //    matching_error_before[i].SaveImage(@"./before/" + i.ToString() + "_0_" + matching_error_mini[i] + ".jpg");
-            //    matching_error_after[i].SaveImage(@"./before/" + i.ToString() + "_1_" + matching_error_mini[i] + ".jpg");
-            //}
+          
         }
 
         private SolidColorBrush returnai_model_01Color_brush(int type)
@@ -1941,15 +1711,6 @@ namespace Wpf
                     }
                 }
             }
-
-            //for (int i = 1; i < 1 + slider_list.Count; i++)
-            //{
-            //    if (PARAMETERS[i * 2] == 1)
-            //        slider_list[i - 1].Value = PARAMETERS[i * 2 + 1];
-            //    else
-            //        slider_list[i - 1].Value = 0;
-            //    label_list[i - 1].Content = Convert.ToInt32(slider_list[i - 1].Value) + "%";
-            //}
 
             parameter_send = PARAMETERS;
             brush_list = brush;
@@ -3199,7 +2960,7 @@ namespace Wpf
                         .Select(g => g.Select(x => x.item));
         }
 
-        private void XInspector_Deactivated(object sender, EventArgs e)
+        private void Deactivated(object sender, EventArgs e)
         {
             System.Windows.Window window = (System.Windows.Window)sender;
             window.Topmost = true;
@@ -3323,6 +3084,7 @@ namespace Wpf
             float u = a.w * a.h + b.w * b.h - i;
             return u;
         }
+        
         //private void backgroundai_model_01AIResult(object sender, DoWorkEventArgs e)
         //{
         //    temp_mat_1 = new Mat();
@@ -3501,7 +3263,7 @@ namespace Wpf
             button.RaiseEvent(new RoutedEventArgs(System.Windows.Controls.Button.ClickEvent));
         }
 
-        private void XInspector_DpiChanged(object sender, DpiChangedEventArgs e)
+        private void DpiChanged(object sender, DpiChangedEventArgs e)
         {
 
         }
