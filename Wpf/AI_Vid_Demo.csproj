@@ -1,0 +1,463 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.Toolkit.UI.XamlHost.6.0.0-preview7.1\build\Microsoft.Toolkit.UI.XamlHost.props" Condition="Exists('..\packages\Microsoft.Toolkit.UI.XamlHost.6.0.0-preview7.1\build\Microsoft.Toolkit.UI.XamlHost.props')" />
+  <Import Project="..\packages\Microsoft.Windows.SDK.Contracts.10.0.18362.2002-preview\build\Microsoft.Windows.SDK.Contracts.props" Condition="Exists('..\packages\Microsoft.Windows.SDK.Contracts.10.0.18362.2002-preview\build\Microsoft.Windows.SDK.Contracts.props')" />
+  <Import Project="..\packages\Microsoft.Toolkit.Win32.UI.XamlApplication.6.0.0-preview7.1\build\Microsoft.Toolkit.Win32.UI.XamlApplication.props" Condition="Exists('..\packages\Microsoft.Toolkit.Win32.UI.XamlApplication.6.0.0-preview7.1\build\Microsoft.Toolkit.Win32.UI.XamlApplication.props')" />
+  <Import Project="..\packages\Microsoft.Toolkit.Win32.UI.SDK.6.0.0-preview7.1\build\Microsoft.Toolkit.Win32.UI.SDK.props" Condition="Exists('..\packages\Microsoft.Toolkit.Win32.UI.SDK.6.0.0-preview7.1\build\Microsoft.Toolkit.Win32.UI.SDK.props')" />
+  <Import Project="..\packages\Xamarin.Forms.4.2.0.709249\build\Xamarin.Forms.props" Condition="Exists('..\packages\Xamarin.Forms.4.2.0.709249\build\Xamarin.Forms.props')" />
+  <Import Project="..\packages\OpenCvSharp4.runtime.win.4.1.0.20190416\build\net\OpenCvSharp4.runtime.win.props" Condition="Exists('..\packages\OpenCvSharp4.runtime.win.4.1.0.20190416\build\net\OpenCvSharp4.runtime.win.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{58B4F98B-C191-4269-A804-3ED3915D7120}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Wpf</RootNamespace>
+    <AssemblyName>AI_Vid_Demo</AssemblyName>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>7.3</LangVersion>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <LangVersion>7.3</LangVersion>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <LangVersion>7.3</LangVersion>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>jss_icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Alturos.Yolo, Version=2.4.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\x64\Release\Alturos.Yolo.dll</HintPath>
+    </Reference>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.3.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>..\packages\BouncyCastle.1.8.3.1\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="ColorPickerLib, Version=1.6.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dirkster.ColorPickerLib.1.6.0\lib\net40\ColorPickerLib.dll</HintPath>
+    </Reference>
+    <Reference Include="ColorPickerWPF, Version=1.0.9.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ColorPickerWPF.1.0.9\lib\net461\ColorPickerWPF.dll</HintPath>
+    </Reference>
+    <Reference Include="CustomWPFColorPicker, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CustomWPFColorPicker.1.0.0\lib\net461\CustomWPFColorPicker.dll</HintPath>
+    </Reference>
+    <Reference Include="jlk_marshal, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\x64\Debug\jlk_marshal.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Expression.Interactions, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WPFSpark.1.4.0\lib\net462\Microsoft.Expression.Interactions.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=8.0.17.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.8.0.17\lib\net452\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenCvSharp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6adad1e807fea099, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenCvSharp4.4.1.0.20190416\lib\net461\OpenCvSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenCvSharp.Blob, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6adad1e807fea099, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenCvSharp4.4.1.0.20190416\lib\net461\OpenCvSharp.Blob.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenCvSharp.Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6adad1e807fea099, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenCvSharp4.4.1.0.20190416\lib\net461\OpenCvSharp.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenCvSharp.UserInterface, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6adad1e807fea099, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenCvSharp4.4.1.0.20190416\lib\net461\OpenCvSharp.UserInterface.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenTK, Version=3.0.1.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenTK.3.0.1\lib\net20\OpenTK.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenTK.GLControl, Version=3.0.1.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenTK.GLControl.3.0.1\lib\net20\OpenTK.GLControl.dll</HintPath>
+    </Reference>
+    <Reference Include="PaletteMixr, Version=0.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\PaletteMixr.0.1.0-alpha\lib\netstandard2.0\PaletteMixr.dll</HintPath>
+    </Reference>
+    <Reference Include="RadialControls, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RadialControls.1.1.0\lib\RadialControls.dll</HintPath>
+    </Reference>
+    <Reference Include="Renci.SshNet, Version=2016.1.0.0, Culture=neutral, PublicKeyToken=1cee9f8bde3db106, processorArchitecture=MSIL">
+      <HintPath>..\packages\SSH.NET.2016.1.0\lib\net40\Renci.SshNet.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.SQLite, Version=1.0.111.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.Core.1.0.111.0\lib\net46\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.EF6, Version=1.0.111.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.EF6.1.0.111.0\lib\net46\System.Data.SQLite.EF6.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.Linq, Version=1.0.111.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.Linq.1.0.111.0\lib\net46\System.Data.SQLite.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WPFSpark.1.4.0\lib\net462\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="ToggleSwitch, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WPF_ToggleSwitch.1.3.0\lib\net462\ToggleSwitch.dll</HintPath>
+    </Reference>
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="VBControls.Wpf, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\x64\Release\VBControls.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
+    <Reference Include="WinFormAnimation, Version=1.6.0.4, Culture=neutral, PublicKeyToken=310fd07b25df79b3, processorArchitecture=MSIL">
+      <HintPath>..\packages\WinFormAnimation.1.6.0.4\lib\net40\WinFormAnimation.dll</HintPath>
+    </Reference>
+    <Reference Include="WPFToggleSwitch, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WPFToggleSwitch.1.0.0\lib\net45\WPFToggleSwitch.dll</HintPath>
+    </Reference>
+    <Reference Include="WriteableBitmapEx.Wpf, Version=1.5.0.0, Culture=neutral, PublicKeyToken=50375ca6144f1c69, processorArchitecture=MSIL">
+      <HintPath>..\packages\WriteableBitmapEx.1.5.1.0\lib\net40\WriteableBitmapEx.Wpf.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="01_MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="01_MainWindow.xaml.cs">
+      <DependentUpon>01_MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="modules\ImgManager.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="OpenTK.dll.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icon\image_battery_off.png" />
+    <Resource Include="icon\image_battery_on.png" />
+    <Resource Include="icon\image_detonator_off.png" />
+    <Resource Include="icon\image_detonator_on.png" />
+    <Resource Include="icon\image_gun_off.png" />
+    <Resource Include="icon\image_gun_on.png" />
+    <Resource Include="icon\image_hdd_off.png" />
+    <Resource Include="icon\image_hdd_on.png" />
+    <Resource Include="icon\image_knife_off.png" />
+    <Resource Include="icon\image_knife_on.png" />
+    <Resource Include="icon\image_laptop_off.png" />
+    <Resource Include="icon\image_laptop_on.png" />
+    <Resource Include="icon\image_laser_off.png" />
+    <Resource Include="icon\image_laser_on.png" />
+    <Resource Include="icon\image_lighter_off.png" />
+    <Resource Include="icon\image_lighter_on.png" />
+    <Resource Include="icon\image_liquid_off.png" />
+    <Resource Include="icon\image_liquid_on.png" />
+    <Resource Include="icon\image_phone_off.png" />
+    <Resource Include="icon\image_phone_on.png" />
+    <Resource Include="icon\image_sdcard_off.png" />
+    <Resource Include="icon\image_sdcard_on.png" />
+    <Resource Include="icon\image_tablet_off.png" />
+    <Resource Include="icon\image_tablet_on.png" />
+    <Resource Include="icon\image_usb_off.png" />
+    <Resource Include="icon\image_usb_on.png" />
+    <Resource Include="JLK LOGO_W.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Updates.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="jss_icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="classfile\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="gear2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="gear.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="archive.png" />
+    <Resource Include="close.png" />
+    <Resource Include="config.png" />
+    <Resource Include="Menu.png" />
+    <Resource Include="Menu_2.png" />
+    <Resource Include="preset.png" />
+    <Resource Include="select.png" />
+    <Resource Include="Symbol.png" />
+    <Resource Include="user.png" />
+    <Resource Include="windowsLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="lower.png" />
+    <Resource Include="upper.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icon\beep_off.png" />
+    <Resource Include="icon\beep_on.png" />
+    <Resource Include="icon\led_off.png" />
+    <Resource Include="icon\led_on.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icon\calendar.png" />
+    <Resource Include="icon\clock_off.png" />
+    <Resource Include="icon\clock_on.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icon\close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="left.png" />
+    <Resource Include="right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icon\calendar_mini.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icon\battery_off_kor.png" />
+    <Resource Include="icon\battery_on_kor.png" />
+    <Resource Include="icon\detonator_off_kor.png" />
+    <Resource Include="icon\detonator_on_kor.png" />
+    <Resource Include="icon\gun_off_kor.png" />
+    <Resource Include="icon\gun_on_kor.png" />
+    <Resource Include="icon\hdd_off_kor.png" />
+    <Resource Include="icon\hdd_on_kor.png" />
+    <Resource Include="icon\knife_off_kor.png" />
+    <Resource Include="icon\knife_on_kor.png" />
+    <Resource Include="icon\laptop_off_kor.png" />
+    <Resource Include="icon\laptop_on_kor.png" />
+    <Resource Include="icon\laser_off_kor.png" />
+    <Resource Include="icon\laser_on_kor.png" />
+    <Resource Include="icon\lighter_off_kor.png" />
+    <Resource Include="icon\lighter_on_kor.png" />
+    <Resource Include="icon\liquid_off_kor.png" />
+    <Resource Include="icon\liquid_on_kor.png" />
+    <Resource Include="icon\phone_off_kor.png" />
+    <Resource Include="icon\phone_on_kor.png" />
+    <Resource Include="icon\sdcard_off_kor.png" />
+    <Resource Include="icon\sdcard_on_kor.png" />
+    <Resource Include="icon\tablet_off_kor.png" />
+    <Resource Include="icon\tablet_on_kor.png" />
+    <Resource Include="icon\usb_off_kor.png" />
+    <Resource Include="icon\usb_on_kor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="ExcelLibrary">
+      <Version>1.2011.7.31</Version>
+    </PackageReference>
+    <PackageReference Include="GemBox.Spreadsheet">
+      <Version>45.0.0.1060</Version>
+    </PackageReference>
+    <PackageReference Include="GstSharp">
+      <Version>1.16.0</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Office.Interop.Excel">
+      <Version>15.0.4795.1000</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="check_off.png" />
+    <Resource Include="check_on.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icon\china.png" />
+    <Resource Include="icon\korea.png" />
+    <Resource Include="icon\us.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icon\battery_off_eng.png" />
+    <Resource Include="icon\battery_on_eng.png" />
+    <Resource Include="icon\detonator_off_eng.png" />
+    <Resource Include="icon\detonator_on_eng.png" />
+    <Resource Include="icon\gun_off_eng.png" />
+    <Resource Include="icon\gun_on_eng.png" />
+    <Resource Include="icon\hdd_off_eng.png" />
+    <Resource Include="icon\hdd_on_eng.png" />
+    <Resource Include="icon\knife_off_eng.png" />
+    <Resource Include="icon\knife_on_eng.png" />
+    <Resource Include="icon\laptop_off_eng.png" />
+    <Resource Include="icon\laptop_on_eng.png" />
+    <Resource Include="icon\laser_off_eng.png" />
+    <Resource Include="icon\laser_on_eng.png" />
+    <Resource Include="icon\lighter_off_eng.png" />
+    <Resource Include="icon\lighter_on_eng.png" />
+    <Resource Include="icon\liquid_off_eng.png" />
+    <Resource Include="icon\liquid_on_eng.png" />
+    <Resource Include="icon\phone_off_eng.png" />
+    <Resource Include="icon\phone_on_eng.png" />
+    <Resource Include="icon\sdcard_off_eng.png" />
+    <Resource Include="icon\sdcard_on_eng.png" />
+    <Resource Include="icon\tablet_off_eng.png" />
+    <Resource Include="icon\tablet_on_eng.png" />
+    <Resource Include="icon\usb_off_eng.png" />
+    <Resource Include="icon\usb_on_eng.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icon\directory_off.png" />
+    <Resource Include="icon\directory_on.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icon\add3_off_eng.png" />
+    <Resource Include="icon\add3_off_kor.png" />
+    <Resource Include="icon\add3_on_eng.png" />
+    <Resource Include="icon\add3_on_kor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icon\image_add3_off.png" />
+    <Resource Include="icon\image_add3_on.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icon\bomb_off_eng.png" />
+    <Resource Include="icon\bomb_off_kor.png" />
+    <Resource Include="icon\bomb_on_eng.png" />
+    <Resource Include="icon\bomb_on_kor.png" />
+    <Resource Include="icon\grenade_off_eng.png" />
+    <Resource Include="icon\grenade_off_kor.png" />
+    <Resource Include="icon\grenade_on_eng.png" />
+    <Resource Include="icon\grenade_on_kor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icon\image_bomb_off.png" />
+    <Resource Include="icon\image_bomb_on.png" />
+    <Resource Include="icon\image_grenade_off.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icon\image_grenade_on.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icon\bullet_off_eng.png" />
+    <Resource Include="icon\bullet_off_kor.png" />
+    <Resource Include="icon\bullet_on_eng.png" />
+    <Resource Include="icon\bullet_on_kor.png" />
+    <Resource Include="icon\image_bullet_off.png" />
+    <Resource Include="icon\image_bullet_on.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>이 프로젝트는 이 컴퓨터에 없는 NuGet 패키지를 참조합니다. 해당 패키지를 다운로드하려면 NuGet 패키지 복원을 사용하십시오. 자세한 내용은 http://go.microsoft.com/fwlink/?LinkID=322105를 참조하십시오. 누락된 파일은 {0}입니다.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\OpenCvSharp4.runtime.win.4.1.0.20190416\build\net\OpenCvSharp4.runtime.win.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\OpenCvSharp4.runtime.win.4.1.0.20190416\build\net\OpenCvSharp4.runtime.win.props'))" />
+    <Error Condition="!Exists('..\packages\System.Data.SQLite.Core.1.0.111.0\build\net46\System.Data.SQLite.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.Data.SQLite.Core.1.0.111.0\build\net46\System.Data.SQLite.Core.targets'))" />
+    <Error Condition="!Exists('..\packages\OpenCL.Net.2.2.9.0\build\net40\OpenCL.Net.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\OpenCL.Net.2.2.9.0\build\net40\OpenCL.Net.targets'))" />
+    <Error Condition="!Exists('..\packages\Xamarin.Forms.4.2.0.709249\build\Xamarin.Forms.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.Forms.4.2.0.709249\build\Xamarin.Forms.props'))" />
+    <Error Condition="!Exists('..\packages\Xamarin.Forms.4.2.0.709249\build\Xamarin.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.Forms.4.2.0.709249\build\Xamarin.Forms.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Toolkit.Win32.UI.SDK.6.0.0-preview7.1\build\Microsoft.Toolkit.Win32.UI.SDK.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Toolkit.Win32.UI.SDK.6.0.0-preview7.1\build\Microsoft.Toolkit.Win32.UI.SDK.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Toolkit.Win32.UI.SDK.6.0.0-preview7.1\build\Microsoft.Toolkit.Win32.UI.SDK.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Toolkit.Win32.UI.SDK.6.0.0-preview7.1\build\Microsoft.Toolkit.Win32.UI.SDK.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Toolkit.Win32.UI.XamlApplication.6.0.0-preview7.1\build\Microsoft.Toolkit.Win32.UI.XamlApplication.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Toolkit.Win32.UI.XamlApplication.6.0.0-preview7.1\build\Microsoft.Toolkit.Win32.UI.XamlApplication.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Toolkit.Win32.UI.XamlApplication.6.0.0-preview7.1\build\Microsoft.Toolkit.Win32.UI.XamlApplication.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Toolkit.Win32.UI.XamlApplication.6.0.0-preview7.1\build\Microsoft.Toolkit.Win32.UI.XamlApplication.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.VCRTForwarders.140.1.0.0-rc\build\net45\Microsoft.VCRTForwarders.140.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.VCRTForwarders.140.1.0.0-rc\build\net45\Microsoft.VCRTForwarders.140.targets'))" />
+    <Error Condition="!Exists('..\packages\System.Runtime.WindowsRuntime.4.6.0-preview4.19212.13\build\net461\System.Runtime.WindowsRuntime.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.Runtime.WindowsRuntime.4.6.0-preview4.19212.13\build\net461\System.Runtime.WindowsRuntime.targets'))" />
+    <Error Condition="!Exists('..\packages\System.Runtime.WindowsRuntime.UI.Xaml.4.6.0-preview4.19212.13\build\net461\System.Runtime.WindowsRuntime.UI.Xaml.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.Runtime.WindowsRuntime.UI.Xaml.4.6.0-preview4.19212.13\build\net461\System.Runtime.WindowsRuntime.UI.Xaml.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Windows.SDK.Contracts.10.0.18362.2002-preview\build\Microsoft.Windows.SDK.Contracts.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Windows.SDK.Contracts.10.0.18362.2002-preview\build\Microsoft.Windows.SDK.Contracts.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Windows.SDK.Contracts.10.0.18362.2002-preview\build\Microsoft.Windows.SDK.Contracts.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Windows.SDK.Contracts.10.0.18362.2002-preview\build\Microsoft.Windows.SDK.Contracts.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Toolkit.UI.XamlHost.6.0.0-preview7.1\build\Microsoft.Toolkit.UI.XamlHost.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Toolkit.UI.XamlHost.6.0.0-preview7.1\build\Microsoft.Toolkit.UI.XamlHost.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Toolkit.UI.XamlHost.6.0.0-preview7.1\build\Microsoft.Toolkit.UI.XamlHost.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Toolkit.UI.XamlHost.6.0.0-preview7.1\build\Microsoft.Toolkit.UI.XamlHost.targets'))" />
+  </Target>
+  <Import Project="..\packages\System.Data.SQLite.Core.1.0.111.0\build\net46\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.111.0\build\net46\System.Data.SQLite.Core.targets')" />
+  <Import Project="..\packages\OpenCL.Net.2.2.9.0\build\net40\OpenCL.Net.targets" Condition="Exists('..\packages\OpenCL.Net.2.2.9.0\build\net40\OpenCL.Net.targets')" />
+  <Import Project="..\packages\Xamarin.Forms.4.2.0.709249\build\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.4.2.0.709249\build\Xamarin.Forms.targets')" />
+  <Import Project="..\packages\Microsoft.Toolkit.Win32.UI.SDK.6.0.0-preview7.1\build\Microsoft.Toolkit.Win32.UI.SDK.targets" Condition="Exists('..\packages\Microsoft.Toolkit.Win32.UI.SDK.6.0.0-preview7.1\build\Microsoft.Toolkit.Win32.UI.SDK.targets')" />
+  <Import Project="..\packages\Microsoft.Toolkit.Win32.UI.XamlApplication.6.0.0-preview7.1\build\Microsoft.Toolkit.Win32.UI.XamlApplication.targets" Condition="Exists('..\packages\Microsoft.Toolkit.Win32.UI.XamlApplication.6.0.0-preview7.1\build\Microsoft.Toolkit.Win32.UI.XamlApplication.targets')" />
+  <Import Project="..\packages\Microsoft.VCRTForwarders.140.1.0.0-rc\build\net45\Microsoft.VCRTForwarders.140.targets" Condition="Exists('..\packages\Microsoft.VCRTForwarders.140.1.0.0-rc\build\net45\Microsoft.VCRTForwarders.140.targets')" />
+  <Import Project="..\packages\System.Runtime.WindowsRuntime.4.6.0-preview4.19212.13\build\net461\System.Runtime.WindowsRuntime.targets" Condition="Exists('..\packages\System.Runtime.WindowsRuntime.4.6.0-preview4.19212.13\build\net461\System.Runtime.WindowsRuntime.targets')" />
+  <Import Project="..\packages\System.Runtime.WindowsRuntime.UI.Xaml.4.6.0-preview4.19212.13\build\net461\System.Runtime.WindowsRuntime.UI.Xaml.targets" Condition="Exists('..\packages\System.Runtime.WindowsRuntime.UI.Xaml.4.6.0-preview4.19212.13\build\net461\System.Runtime.WindowsRuntime.UI.Xaml.targets')" />
+  <Import Project="..\packages\Microsoft.Windows.SDK.Contracts.10.0.18362.2002-preview\build\Microsoft.Windows.SDK.Contracts.targets" Condition="Exists('..\packages\Microsoft.Windows.SDK.Contracts.10.0.18362.2002-preview\build\Microsoft.Windows.SDK.Contracts.targets')" />
+  <Import Project="..\packages\Microsoft.Toolkit.UI.XamlHost.6.0.0-preview7.1\build\Microsoft.Toolkit.UI.XamlHost.targets" Condition="Exists('..\packages\Microsoft.Toolkit.UI.XamlHost.6.0.0-preview7.1\build\Microsoft.Toolkit.UI.XamlHost.targets')" />
+</Project>
